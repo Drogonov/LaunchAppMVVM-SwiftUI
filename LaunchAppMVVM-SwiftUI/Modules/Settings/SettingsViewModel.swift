@@ -12,7 +12,7 @@ class SettingsViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    let type: TabBarItemType
+    let type: MainTabBar
     
     var navigationTitle: String {
         setNavigationTitle()
@@ -26,7 +26,7 @@ class SettingsViewModel: ObservableObject {
     
     // MARK: - Construction
     
-    init(type: TabBarItemType) {
+    init(type: MainTabBar) {
         self.type = type
     }
 }

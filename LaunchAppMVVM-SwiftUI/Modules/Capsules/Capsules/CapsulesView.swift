@@ -17,34 +17,17 @@ struct CapsulesView: View {
     // MARK: - Construction
     
     var body: some View {
-        let layout = [
-            GridItem(
-                .adaptive(
-                    minimum: Display.width / 2 - 20,
-                    maximum: Display.width / 2
-                ),
-                spacing: 8
-            )
-        ]
-        
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: layout, alignment: .center, spacing: 8) {
-                    ForEach(model.capsules, id: \.id) { capsule in
-                        configureCapsuleCell(capsule: capsule)
+            loadedView()
+                .navigationTitle(model.navigationTitle)
+                .toolbar {
+                    Button {
+                        router.route = .settings(type: .capsules)
+                    } label: {
+                        Image(systemName: "gear")
+                            .foregroundColor(Color(UIColor.primaryTextColor))
                     }
                 }
-                .padding(5)
-            }
-            .navigationTitle(model.navigationTitle)
-            .toolbar {
-                Button {
-                    router.route = .settings(type: .capsules)
-                } label: {
-                    Image(systemName: "gear")
-                        .foregroundColor(Color(UIColor.primaryTextColor))
-                }
-            }
         }
         .onAppear {
             model.loadCapsules()
@@ -55,7 +38,43 @@ struct CapsulesView: View {
 // MARK: - Helper Functions
 
 extension CapsulesView {
-    func configureCapsuleCell(capsule: CapsuleCellViewModel) -> some View {
+    
+    @ViewBuilder
+    private func loadedView() -> some View {
+        switch model.loadState {
+        case .initial:
+            EmptyView()
+        case .loading:
+            Loader(color: .red)
+        case .fail:
+            Image(systemName: "arrow.clockwise")
+                .renderingMode(.template)
+                .foregroundColor(.white)
+                .font(.system(size: 22))
+                .animation(.default)
+        case .success:
+            let layout = [
+                GridItem(
+                    .adaptive(
+                        minimum: Display.width / 2 - 20,
+                        maximum: Display.width / 2
+                    ),
+                    spacing: 8
+                )
+            ]
+            
+            ScrollView {
+                LazyVGrid(columns: layout, alignment: .center, spacing: 8) {
+                    ForEach(model.capsules, id: \.id) { capsule in
+                        configureCapsuleCell(capsule: capsule)
+                    }
+                }
+                .padding(5)
+            }
+        }
+    }
+    
+    private func configureCapsuleCell(capsule: CapsuleCellViewModel) -> some View {
         return VStack(alignment: .center, spacing: 16) {
             let model = CapsuleDetailsViewModel(model: CapsuleDetailsModel(serial: capsule.capsuleName))
             

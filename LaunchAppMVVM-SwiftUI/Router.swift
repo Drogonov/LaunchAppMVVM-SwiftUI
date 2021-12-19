@@ -8,14 +8,27 @@
 import Foundation
 import SwiftUI
 
+class Router: ObservableObject {
+    @Published var route: RoutesTypes = .mainTabBar
+    @Published var tabController = TabController()
+}
+
 enum RoutesTypes: Hashable {
-    case launches
-    case capsules
-    case settings(type: TabBarItemType)
+    case settings(type: MainTabBar)
     case mainTabBar
 }
 
-class Router: ObservableObject {
-    @Published var route: RoutesTypes = .mainTabBar
-    @Published var isPresentedSettings: Bool = false
+enum MainTabBar {
+    case launches
+    case capsules
 }
+
+class TabController: ObservableObject {
+    @Published var activeTab = MainTabBar.launches
+
+    func open(_ tab: MainTabBar) {
+        activeTab = tab
+    }
+}
+
+

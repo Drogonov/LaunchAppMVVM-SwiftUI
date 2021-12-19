@@ -19,21 +19,16 @@ struct LaunchesView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(model.launches, id: \.id) { launch in
-                    configureLaunchCell(with: launch)
+            loadedView()
+                .navigationTitle(model.navigationTitle)
+                .toolbar {
+                    Button {
+                        router.route = .settings(type: .launches)
+                    } label: {
+                        Image(systemName: "gear")
+                            .foregroundColor(Color(UIColor.primaryTextColor))
+                    }
                 }
-            }
-            .listStyle(.plain)
-            .navigationTitle(model.navigationTitle)
-            .toolbar {
-                Button {
-                    router.route = .settings(type: .launches)
-                } label: {
-                    Image(systemName: "gear")
-                        .foregroundColor(Color(UIColor.primaryTextColor))
-                }
-            }
         }
         .onAppear {
             model.loadLaunches()
@@ -44,6 +39,30 @@ struct LaunchesView: View {
 // MARK: - Helper Functions
 
 extension LaunchesView {
+    @ViewBuilder
+    private func loadedView() -> some View {
+        switch model.loadState {
+        case .initial:
+            EmptyView()
+        case .loading:
+            Loader(color: .red)
+            
+        case .fail:
+            Image(systemName: "arrow.clockwise")
+                .renderingMode(.template)
+                .foregroundColor(.white)
+                .font(.system(size: 22))
+                .animation(.default)
+        case .success:
+            List {
+                ForEach(model.launches, id: \.id) { launch in
+                    configureLaunchCell(with: launch)
+                }
+            }
+            .listStyle(.plain)
+        }
+    }
+    
     private func configureLaunchCell(with launch: LaunchesCellViewModel) -> some View {
         
         HStack(alignment: .top, spacing: 16) {
@@ -57,7 +76,7 @@ extension LaunchesView {
                     .scaledToFill()
                     .frame(width: 120, height: 120)
             }
-                        
+            
             VStack(alignment: .leading, spacing: 16) {
                 Text(launch.name)
                     .font(Font.system(size: 20, weight: .bold, design: .default))
@@ -67,7 +86,7 @@ extension LaunchesView {
             }
         }
     }
-        
+    
     private func configurePatchImage(with url: URL) -> KFImage {
         
         return KFImage(url)

@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-enum TabBarItemType {
-    case launches
-    case capsules
-}
-
 enum NotificationConfiguration {
     case textField
     case defaultAction

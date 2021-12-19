@@ -9,5 +9,5 @@
 import Foundation
 
 struct SettingsModel {
-    let type: TabBarItemType
+    let type: MainTabBar
 }

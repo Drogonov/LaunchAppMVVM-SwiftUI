@@ -10,34 +10,54 @@ import SwiftUI
 struct MainTabBarView: View {
     
     // MARK: - Properties
-    
+    @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject var router: Router
     @StateObject var launchesVM = LaunchesViewModel()
     @StateObject var capsulesVM = CapsulesViewModel()
     
+    @State private var presentSettings = false
+
     // MARK: - Construction
     
     var body: some View {
-        TabView(selection: $router.route) {
+        TabView(selection: $router.tabController.activeTab) {
             LaunchesView(model: launchesVM)
                 .tabItem {
-                    configureTabItem(currentRoute: .launches)
+                    configureTabItem(currentTab: .launches)
                 }
-                .tag(RoutesTypes.launches)
+                .tag(MainTabBar.launches)
             
             CapsulesView(model: capsulesVM)
                 .tabItem {
-                    configureTabItem(currentRoute: .capsules)
+                    configureTabItem(currentTab: .capsules)
                 }
-                .tag(RoutesTypes.capsules)
+                .tag(MainTabBar.capsules)
         }
         .accentColor(Color.primaryTextColor)
-        .sheet(isPresented: $router.isPresentedSettings) {
-//            let model = SettingsViewModel(type: router.route)
-//            SettingsView(
-//                model: <#T##SettingsViewModel#>,
-//                confirmButtonAction: {}
-//            )
+        .sheet(isPresented: $presentSettings) {
+            switch router.route {
+            case .settings(type: let type):
+                let model = SettingsViewModel(type: type)
+
+                SettingsView(
+                    model: model,
+                    confirmButtonAction: {}
+                )
+            default: EmptyView()
+            }
+
+        }
+        .onChange(of: router.route) { _ in
+            isPresentedSettings()
+        }
+    }
+    
+    func isPresentedSettings() {
+        switch router.route {
+        case .settings(type: _):
+            presentSettings = true
+        case .mainTabBar:
+            presentSettings = false
         }
     }
 }
@@ -45,16 +65,16 @@ struct MainTabBarView: View {
 // MARK: - Helper Functions
 
 extension MainTabBarView {
-    private func configureTabItem(currentRoute: RoutesTypes) -> some View {
-        switch currentRoute {
+    private func configureTabItem(currentTab: MainTabBar) -> some View {
+        switch currentTab {
         case .launches:
-            if router.route == currentRoute {
+            if router.tabController.activeTab == currentTab {
                 return Label("Launches", systemImage: "capslock")
             } else {
                 return Label("Launches", systemImage: "capslock.fill")
             }
-        default:
-            if router.route == currentRoute {
+        case .capsules:
+            if router.tabController.activeTab == currentTab {
                 return Label("Capsules", systemImage: "bolt.car")
             } else {
                 return Label("Capsules", systemImage: "bolt.car.fill")

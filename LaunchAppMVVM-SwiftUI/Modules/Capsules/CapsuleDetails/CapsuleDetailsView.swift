@@ -16,10 +16,8 @@ struct CapsuleDetailsView: View {
     // MARK: - Construction
     
     var body: some View {
-        List {
-            ForEach(model.capsuleValues, id: \.self) { value in
-                configureCapsuleDetailsCell(with: value)
-            }
+        VStack {
+            loadedView()
         }
         .navigationTitle(model.navigationTitle)
         .onAppear {
@@ -31,6 +29,29 @@ struct CapsuleDetailsView: View {
 // MARK: - Helper Function
 
 extension CapsuleDetailsView {
+    
+    @ViewBuilder
+    private func loadedView() -> some View {
+        switch model.loadState {
+        case .initial:
+            EmptyView()
+        case .loading:
+            Loader(color: .red)
+        case .fail:
+            Image(systemName: "arrow.clockwise")
+                .renderingMode(.template)
+                .foregroundColor(.white)
+                .font(.system(size: 22))
+                .animation(.default)
+        case .success:
+            List {
+                ForEach(model.capsuleValues, id: \.self) { value in
+                    configureCapsuleDetailsCell(with: value)
+                }
+            }
+        }
+    }
+    
     private func configureCapsuleDetailsCell(with value: CapsuleDetailsCellViewModel) -> some View {
         return HStack(alignment: .top, spacing: 16) {
             Text(value.title + ":")
