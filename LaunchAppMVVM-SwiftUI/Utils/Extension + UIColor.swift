@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIColor {
     static let backgroundColor = UIColor.systemBackground
@@ -13,10 +14,16 @@ extension UIColor {
     static let primaryTextColor = UIColor.label
     static let secondaryTextColor = UIColor.gray
     
-    static let actionButtonTextColor = UIColor.systemBackground
-    static let actionButtonBackgroundColor = UIColor.label
-    
     static let accentColor = UIColor(rgb: 0xCFD4D9)
+}
+
+extension Color {
+    static let backgroundColor = Color(UIColor.backgroundColor)
+    
+    static let primaryTextColor = Color(UIColor.primaryTextColor)
+    static let secondaryTextColor = Color(UIColor.secondaryTextColor)
+    
+    static let accentColor = Color(UIColor.accentColor)
 }
 
 extension UIColor {

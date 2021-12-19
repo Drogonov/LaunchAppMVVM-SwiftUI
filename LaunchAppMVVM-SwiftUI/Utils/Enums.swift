@@ -39,3 +39,10 @@ enum NotificationConfiguration {
         self = .defaultAction
     }
 }
+
+enum LoadState {
+    case initial
+    case loading
+    case fail
+    case success
+}

@@ -7,10 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var spaceXDataService: SpaceXDataService
-    
+struct ContentView: View {    
     var body: some View {
         MainTabBarView()
     }

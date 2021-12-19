@@ -9,13 +9,12 @@ import SwiftUI
 
 struct MainTabBarView: View {
     @EnvironmentObject var router: Router
-    @EnvironmentObject var spaceXDataService: SpaceXDataService
     @StateObject var launchesVM = LaunchesViewModel()
     @StateObject var capsulesVM = CapsulesViewModel()
     
     var body: some View {
         TabView(selection: $router.route) {
-            LaunchesView()
+            LaunchesView(model: launchesVM)
                 .tag(RoutesTypes.launches)
                 .tabItem {
                     Label("Launches", systemImage: "list.dash")

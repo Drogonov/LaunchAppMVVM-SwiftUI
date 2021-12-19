@@ -10,13 +10,12 @@ import SwiftUI
 @main
 struct LaunchAppMVVM_SwiftUIApp: App {
     let router = Router()
-    let spaceXDataService = SpaceXDataService()
+    let manager = DependencyManager()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(router)
-                .environmentObject(spaceXDataService)
         }
     }
 }

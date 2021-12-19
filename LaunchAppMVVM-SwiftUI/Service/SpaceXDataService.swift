@@ -25,7 +25,7 @@ protocol SpaceXDataServiceProtocol {
     )
 }
 
-final class SpaceXDataService: SpaceXDataServiceProtocol, ObservableObject {
+final class SpaceXDataService: SpaceXDataServiceProtocol, Injectable {
     
     private let provider = MoyaProvider<SpaceXDataAPI>()
     
