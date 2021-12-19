@@ -9,6 +9,9 @@
 import Foundation
 
 class SettingsViewModel: ObservableObject {
+    
+    // MARK: - Properties
+    
     let type: TabBarItemType
     
     var navigationTitle: String {
@@ -21,11 +24,11 @@ class SettingsViewModel: ObservableObject {
     
     let buttonText: String = "Confirm"
     
+    // MARK: - Construction
+    
     init(type: TabBarItemType) {
         self.type = type
     }
-    
-    
 }
 
 // MARK: - Helper Functions

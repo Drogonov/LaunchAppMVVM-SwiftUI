@@ -10,6 +10,7 @@
 		843A8F1C276F566C008F2D47 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A8F1B276F566C008F2D47 /* SettingsView.swift */; };
 		843A8F20276F63E7008F2D47 /* LaunchesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A8F1F276F63E7008F2D47 /* LaunchesCellViewModel.swift */; };
 		843A8F22276F6BCF008F2D47 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A8F21276F6BCF008F2D47 /* DependencyManager.swift */; };
+		843A8F24276FC23F008F2D47 /* CapsuleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A8F23276FC23F008F2D47 /* CapsuleDetailsView.swift */; };
 		84DC1D4D276E3A9200E327C1 /* LaunchAppMVVM_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1D4C276E3A9200E327C1 /* LaunchAppMVVM_SwiftUIApp.swift */; };
 		84DC1D4F276E3A9200E327C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1D4E276E3A9200E327C1 /* ContentView.swift */; };
 		84DC1D51276E3A9400E327C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84DC1D50276E3A9400E327C1 /* Assets.xcassets */; };
@@ -26,7 +27,7 @@
 		84DC1DE6276E3CE300E327C1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DD5276E3CE300E327C1 /* Extensions.swift */; };
 		84DC1DE7276E3CE300E327C1 /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DD6276E3CE300E327C1 /* Extension + UIColor.swift */; };
 		84DC1DE8276E3CE300E327C1 /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DD7276E3CE300E327C1 /* Extension + UIView.swift */; };
-		84DC1DEA276E42D100E327C1 /* MaunTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DE9276E42D100E327C1 /* MaunTabBarView.swift */; };
+		84DC1DEA276E42D100E327C1 /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DE9276E42D100E327C1 /* MainTabBarView.swift */; };
 		84DC1DED276E439D00E327C1 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 84DC1DEC276E439D00E327C1 /* Moya */; };
 		84DC1DF0276E43AB00E327C1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 84DC1DEF276E43AB00E327C1 /* Kingfisher */; };
 		84DC1DFA276E44A100E327C1 /* CapsuleDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DF5276E44A000E327C1 /* CapsuleDetailsViewModel.swift */; };
@@ -42,6 +43,7 @@
 		843A8F1B276F566C008F2D47 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		843A8F1F276F63E7008F2D47 /* LaunchesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesCellViewModel.swift; sourceTree = "<group>"; };
 		843A8F21276F6BCF008F2D47 /* DependencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
+		843A8F23276FC23F008F2D47 /* CapsuleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleDetailsView.swift; sourceTree = "<group>"; };
 		84DC1D49276E3A9200E327C1 /* LaunchAppMVVM-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LaunchAppMVVM-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DC1D4C276E3A9200E327C1 /* LaunchAppMVVM_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAppMVVM_SwiftUIApp.swift; sourceTree = "<group>"; };
 		84DC1D4E276E3A9200E327C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,7 +61,7 @@
 		84DC1DD5276E3CE300E327C1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		84DC1DD6276E3CE300E327C1 /* Extension + UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
 		84DC1DD7276E3CE300E327C1 /* Extension + UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
-		84DC1DE9276E42D100E327C1 /* MaunTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaunTabBarView.swift; sourceTree = "<group>"; };
+		84DC1DE9276E42D100E327C1 /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
 		84DC1DF5276E44A000E327C1 /* CapsuleDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapsuleDetailsViewModel.swift; sourceTree = "<group>"; };
 		84DC1DF6276E44A100E327C1 /* LaunchesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchesViewModel.swift; sourceTree = "<group>"; };
 		84DC1DF7276E44A100E327C1 /* CapsulesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapsulesViewModel.swift; sourceTree = "<group>"; };
@@ -85,6 +87,8 @@
 		843A8F1D276F5671008F2D47 /* Capsules */ = {
 			isa = PBXGroup;
 			children = (
+				84DC1DF7276E44A100E327C1 /* CapsulesViewModel.swift */,
+				84DC1E01276E44EA00E327C1 /* CapsulesView.swift */,
 			);
 			path = Capsules;
 			sourceTree = "<group>";
@@ -92,6 +96,8 @@
 		843A8F1E276F5679008F2D47 /* CapsuleDetails */ = {
 			isa = PBXGroup;
 			children = (
+				84DC1DF5276E44A000E327C1 /* CapsuleDetailsViewModel.swift */,
+				843A8F23276FC23F008F2D47 /* CapsuleDetailsView.swift */,
 			);
 			path = CapsuleDetails;
 			sourceTree = "<group>";
@@ -115,7 +121,7 @@
 		84DC1D4B276E3A9200E327C1 /* LaunchAppMVVM-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				84DC1DE9276E42D100E327C1 /* MaunTabBarView.swift */,
+				84DC1DE9276E42D100E327C1 /* MainTabBarView.swift */,
 				84DC1DBB276E3CE300E327C1 /* Router.swift */,
 				84DC1DF1276E445500E327C1 /* Modules */,
 				84DC1DBD276E3CE300E327C1 /* Service */,
@@ -203,9 +209,6 @@
 			children = (
 				843A8F1E276F5679008F2D47 /* CapsuleDetails */,
 				843A8F1D276F5671008F2D47 /* Capsules */,
-				84DC1DF5276E44A000E327C1 /* CapsuleDetailsViewModel.swift */,
-				84DC1DF7276E44A100E327C1 /* CapsulesViewModel.swift */,
-				84DC1E01276E44EA00E327C1 /* CapsulesView.swift */,
 			);
 			path = Capsules;
 			sourceTree = "<group>";
@@ -302,7 +305,8 @@
 				843A8F1C276F566C008F2D47 /* SettingsView.swift in Sources */,
 				843A8F22276F6BCF008F2D47 /* DependencyManager.swift in Sources */,
 				84DC1D4F276E3A9200E327C1 /* ContentView.swift in Sources */,
-				84DC1DEA276E42D100E327C1 /* MaunTabBarView.swift in Sources */,
+				84DC1DEA276E42D100E327C1 /* MainTabBarView.swift in Sources */,
+				843A8F24276FC23F008F2D47 /* CapsuleDetailsView.swift in Sources */,
 				84DC1E00276E44D500E327C1 /* LaunchesView.swift in Sources */,
 				843A8F20276F63E7008F2D47 /* LaunchesCellViewModel.swift in Sources */,
 				84DC1DFB276E44A100E327C1 /* LaunchesViewModel.swift in Sources */,

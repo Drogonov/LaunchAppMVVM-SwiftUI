@@ -6,6 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct Display {
+    static var width = UIScreen.main.bounds.width
+    static var height = UIScreen.main.bounds.width
+}
 
 struct Constants {
     static let baseUrlString = "https://api.spacexdata.com/v3"

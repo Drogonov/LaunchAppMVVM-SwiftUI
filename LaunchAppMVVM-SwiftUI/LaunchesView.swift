@@ -12,7 +12,7 @@ import Kingfisher
 struct LaunchesView: View {
     
     // MARK: - Properties
-    
+    @EnvironmentObject var router: Router
     @ObservedObject var model: LaunchesViewModel
     
     // MARK: - Construction
@@ -26,6 +26,17 @@ struct LaunchesView: View {
             }
             .listStyle(.plain)
             .navigationTitle(model.navigationTitle)
+            .toolbar {
+                Button {
+                    router.route = .settings(type: .launches)
+                } label: {
+                    Image(systemName: "gear")
+                        .foregroundColor(Color(UIColor.primaryTextColor))
+                }
+            }
+        }
+        .onAppear {
+            model.loadLaunches()
         }
     }
 }

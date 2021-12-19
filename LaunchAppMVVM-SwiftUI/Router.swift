@@ -8,14 +8,14 @@
 import Foundation
 import SwiftUI
 
-enum RoutesTypes {
+enum RoutesTypes: Hashable {
     case launches
-    case launchesDetails
     case capsules
-    case settings
+    case settings(type: TabBarItemType)
     case mainTabBar
 }
 
 class Router: ObservableObject {
     @Published var route: RoutesTypes = .mainTabBar
+    @Published var isPresentedSettings: Bool = false
 }

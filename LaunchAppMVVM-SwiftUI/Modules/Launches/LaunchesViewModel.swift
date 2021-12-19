@@ -17,18 +17,10 @@ class LaunchesViewModel: ObservableObject {
     @Published var launches: [LaunchesCellViewModel] = []
     
     @Inject var spaceXDataService: SpaceXDataService
-
-    // MARK: - Construction
     
-    init() {
-        loadLaunches()
-    }
-}
-
-// MARK: - Helper Functions
-
-extension LaunchesViewModel {
-    private func loadLaunches() {
+    // MARK: - Methods
+    
+    func loadLaunches() {
         loadState = .loading
         spaceXDataService.getLaunchesList { [weak self] result in
             guard let self = self else { return }
@@ -44,6 +36,12 @@ extension LaunchesViewModel {
             }
         }
     }
+}
+
+// MARK: - Helper Functions
+
+extension LaunchesViewModel {
+
     
     private func configureLaunchesArray(with response: [LaunchMo]) {
         launches = response.map { model in
