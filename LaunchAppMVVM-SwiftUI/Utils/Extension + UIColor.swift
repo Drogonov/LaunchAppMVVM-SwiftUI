@@ -10,6 +10,7 @@ import SwiftUI
 
 extension UIColor {
     static let backgroundColor = UIColor.systemBackground
+    static let secondaryBackground = UIColor.secondarySystemBackground
     
     static let primaryTextColor = UIColor.label
     static let secondaryTextColor = UIColor.gray
@@ -19,6 +20,7 @@ extension UIColor {
 
 extension Color {
     static let backgroundColor = Color(UIColor.backgroundColor)
+    static let secondaryBackground = Color(UIColor.secondaryBackground)
     
     static let primaryTextColor = Color(UIColor.primaryTextColor)
     static let secondaryTextColor = Color(UIColor.secondaryTextColor)

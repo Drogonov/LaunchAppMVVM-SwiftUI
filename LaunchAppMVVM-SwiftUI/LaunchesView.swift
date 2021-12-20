@@ -12,84 +12,72 @@ import Kingfisher
 struct LaunchesView: View {
     
     // MARK: - Properties
+    
     @EnvironmentObject var router: Router
     @ObservedObject var model: LaunchesViewModel
     
     // MARK: - Construction
     
     var body: some View {
-        NavigationView {
-            loadedView()
-                .navigationTitle(model.navigationTitle)
-                .toolbar {
-                    Button {
-                        router.route = .settings(type: .launches)
-                    } label: {
-                        Image(systemName: "gear")
-                            .foregroundColor(Color(UIColor.primaryTextColor))
-                    }
-                }
-        }
-        .onAppear {
-            model.loadLaunches()
-        }
+        let navBarComponents = NavigationViewComponents(
+            navigationTitle: model.navigationTitle,
+            leftBarButtonTapped: {
+                model.loadLaunches()
+            },
+            rightBarButtonTapped: {
+                router.route = .settings(type: .launches)
+            }
+        )
+        
+        LoadedView(
+            loadState: $model.loadState,
+            successView: launchesView()
+        )
+            .navigationBarStyle(components: navBarComponents)
+            .onAppear {
+                model.loadLaunches()
+            }
     }
 }
 
 // MARK: - Helper Functions
 
 extension LaunchesView {
-    @ViewBuilder
-    private func loadedView() -> some View {
-        switch model.loadState {
-        case .initial:
-            EmptyView()
-        case .loading:
-            Loader(color: .red)
-            
-        case .fail:
-            Image(systemName: "arrow.clockwise")
-                .renderingMode(.template)
-                .foregroundColor(.white)
-                .font(.system(size: 22))
-                .animation(.default)
-        case .success:
-            List {
-                ForEach(model.launches, id: \.id) { launch in
-                    configureLaunchCell(with: launch)
-                }
+    private func launchesView() -> some View {
+        List {
+            ForEach(model.launches, id: \.id) { launch in
+                configureLaunchCell(with: launch)
             }
-            .listStyle(.plain)
         }
+        .listStyle(.plain)
     }
     
     private func configureLaunchCell(with launch: LaunchesCellViewModel) -> some View {
-        
-        HStack(alignment: .top, spacing: 16) {
+        HStack(alignment: .top, spacing: Constants.standartPadding) {
             if let url = URL(string: launch.imageURL) {
                 configurePatchImage(with: url)
                     .resizable()
-                    .frame(width: 120, height: 120)
+                    .frame(width: Constants.imageSize, height: Constants.imageSize)
             } else {
                 Image(uiImage: UIImage(named: "logo")!)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 120, height: 120)
+                    .frame(width: Constants.imageSize, height: Constants.imageSize)
             }
             
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: Constants.standartPadding) {
                 Text(launch.name)
-                    .font(Font.system(size: 20, weight: .bold, design: .default))
+                    .font(Font.titleFont)
                 Text(launch.launchYear)
-                    .font(Font.system(size: 18))
+                    .font(Font.subtitleFont)
                 Text(launch.details)
+                    .font(Font.bodyFont)
             }
         }
     }
     
     private func configurePatchImage(with url: URL) -> KFImage {
-        
-        return KFImage(url)
+        KFImage(url)
             .placeholder {
                 // Placeholder while downloading.
                 Image(systemName: "arrow.2.circlepath.circle")
@@ -108,8 +96,6 @@ extension LaunchesView {
             .resizable()
     }
 }
-
-
 
 // MARK: - LaunchesView_Previews
 

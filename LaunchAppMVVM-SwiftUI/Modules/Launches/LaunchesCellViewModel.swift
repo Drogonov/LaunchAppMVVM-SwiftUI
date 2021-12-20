@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LaunchesCellViewModel {
+struct LaunchesCellViewModel: Equatable {
     let id: UUID = UUID()
     var name: String = "unnamed"
     var details: String = "no data"

@@ -19,25 +19,34 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextEditor(text: .constant(model.text))
-                    .font(Constant.font)
-                    .padding(.horizontal, Constant.textPaddingHorizontal)
-                
+                configureTextEditor()
                 Spacer()
-                
-                Button {
-                    confirmButtonAction()
-                } label: {
-                    Text(model.buttonText)
-                        .padding(.horizontal, Constant.buttonPaddingHorizontal)
-                        .frame(height: Constant.buttonHeight)
-                        .foregroundColor(Color(UIColor.primaryTextColor)
-                        )
-                        .background(Color(UIColor.accentColor))
-                        .cornerRadius(Constant.cornerRadius)
-                }
+                configureConfirmButton()
             }
             .navigationTitle(model.navigationTitle)
+        }
+    }
+}
+
+// MARK: - Helper Functions
+
+extension SettingsView {
+    func configureTextEditor() -> some View {
+        TextEditor(text: .constant(model.text))
+            .font(Font.bodyFont)
+            .padding(.horizontal, Constants.standartPadding)
+    }
+    
+    func configureConfirmButton() -> some View {
+        Button {
+            confirmButtonAction()
+        } label: {
+            Text(model.buttonText)
+                .padding(.horizontal, LocalConstants.buttonPaddingHorizontal)
+                .frame(height: Constants.buttonHeight)
+                .foregroundColor(Color.primaryTextColor)
+                .background(Color.accentColor)
+                .cornerRadius(Constants.cornerRadius)
         }
     }
 }
@@ -45,12 +54,8 @@ struct SettingsView: View {
 // MARK: - Constants
 
 extension SettingsView {
-    private enum Constant {
-        static let font = Font.system(size: 16)
-        static let cornerRadius: CGFloat = 10
-        static let buttonHeight: CGFloat = 40
+    private enum LocalConstants {
         static let buttonPaddingHorizontal: CGFloat = 80
-        static let textPaddingHorizontal: CGFloat = 16
     }
 }
 

@@ -19,5 +19,10 @@ struct Constants {
         URL(string: baseUrlString)!
     }()
     
-    static let delay: UInt32 = 1
+    static let delay: UInt32 = 3
+    static let smallPadding: CGFloat = 8
+    static let standartPadding: CGFloat = 16
+    static let imageSize: CGFloat = 120
+    static let buttonHeight: CGFloat = 40
+    static let cornerRadius: CGFloat = 10
 }

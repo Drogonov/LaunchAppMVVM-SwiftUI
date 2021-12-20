@@ -10,6 +10,7 @@ import SwiftUI
 struct CapsulesView: View {
     
     // MARK: - Properties
+    
     @EnvironmentObject var router: Router
     @ObservedObject var model: CapsulesViewModel
     @State var selection: Int? = nil
@@ -17,112 +18,108 @@ struct CapsulesView: View {
     // MARK: - Construction
     
     var body: some View {
-        NavigationView {
-            loadedView()
-                .navigationTitle(model.navigationTitle)
-                .toolbar {
-                    Button {
-                        router.route = .settings(type: .capsules)
-                    } label: {
-                        Image(systemName: "gear")
-                            .foregroundColor(Color(UIColor.primaryTextColor))
-                    }
-                }
-        }
-        .onAppear {
-            model.loadCapsules()
-        }
+        let navBarComponents = NavigationViewComponents(
+            navigationTitle: model.navigationTitle,
+            leftBarButtonTapped: {
+                model.loadCapsules()
+            },
+            rightBarButtonTapped: {
+                router.route = .settings(type: .capsules)
+            }
+        )
+        
+        LoadedView(
+            loadState: $model.loadState,
+            successView: capsulesView()
+        )
+            .navigationBarStyle(components: navBarComponents)
+            .onAppear {
+                model.loadCapsules()
+            }
     }
 }
 
 // MARK: - Helper Functions
 
 extension CapsulesView {
-    
-    @ViewBuilder
-    private func loadedView() -> some View {
-        switch model.loadState {
-        case .initial:
-            EmptyView()
-        case .loading:
-            Loader(color: .red)
-        case .fail:
-            Image(systemName: "arrow.clockwise")
-                .renderingMode(.template)
-                .foregroundColor(.white)
-                .font(.system(size: 22))
-                .animation(.default)
-        case .success:
-            let layout = [
-                GridItem(
-                    .adaptive(
-                        minimum: Display.width / 2 - 20,
-                        maximum: Display.width / 2
-                    ),
-                    spacing: 8
-                )
-            ]
-            
-            ScrollView {
-                LazyVGrid(columns: layout, alignment: .center, spacing: 8) {
-                    ForEach(model.capsules, id: \.id) { capsule in
-                        configureCapsuleCell(capsule: capsule)
-                    }
+    private func capsulesView() -> some View {
+        let layout = [
+            GridItem(
+                .adaptive(
+                    minimum: Display.width / 2 - 20,
+                    maximum: Display.width / 2
+                ),
+                spacing: 8
+            )
+        ]
+        
+        return ScrollView {
+            LazyVGrid(columns: layout, alignment: .center, spacing: Constants.smallPadding) {
+                ForEach(model.capsules, id: \.id) { capsule in
+                    configureCapsuleCell(capsule: capsule)
                 }
-                .padding(5)
             }
+            .padding(5)
         }
     }
     
     private func configureCapsuleCell(capsule: CapsuleCellViewModel) -> some View {
-        return VStack(alignment: .center, spacing: 16) {
-            let model = CapsuleDetailsViewModel(model: CapsuleDetailsModel(serial: capsule.capsuleName))
-            
-            Button {
-                debugPrint("Status button pressed \(capsule.id)")
-            } label: {
-                Circle()
-                    .frame(width: Constant.capsuleStatusButtonSize, height: Constant.capsuleStatusButtonSize)
-                    .foregroundColor(capsule.statusButtonColor)
-            }
-            .shadow(radius: 2)
-            .padding(.top, 16)
-            
-            NavigationLink(
-                destination: CapsuleDetailsView(model: model),
-                tag: 1,
-                selection: $selection
-            ) {
-                Button {
-                    self.selection = 1
-                } label: {
-                    Text(capsule.capsuleEmoji)
-                        .font(Font.system(size: 64, weight: .bold, design: .default))
-                        .frame(
-                            width: Constant.capsuleImageViewSize,
-                            height: Constant.capsuleImageViewSize
-                        )
-                        .background(Color(UIColor.backgroundColor))
-                        .cornerRadius(Constant.capsuleImageViewSize / 2)
-                        .overlay(
-                            RoundedRectangle(
-                                cornerRadius: Constant.capsuleImageViewSize / 2
-                            )
-                                .stroke(Color.primaryTextColor, lineWidth: 2)
-                        )
-                }
-            }
-            
+        let model = CapsuleDetailsViewModel(model: CapsuleDetailsModel(serial: capsule.capsuleName))
+
+        return VStack(alignment: .center, spacing:Constants.standartPadding) {
+            configureStatusButton(with: capsule)
+            configureNavigationButton(with: capsule, and: model)
             Text(capsule.capsuleName)
-            
             Spacer()
-            
         }
         .frame(
             width: Display.width / 2 - 20
         )
         .background(Color(UIColor.secondarySystemBackground))
-        .cornerRadius(10)
+        .cornerRadius(Constants.cornerRadius)
+    }
+    
+    func configureNavigationButton(with capsule: CapsuleCellViewModel, and model: CapsuleDetailsViewModel) -> some View{
+        NavigationLink(
+            destination: CapsuleDetailsView(model: model),
+            tag: 1,
+            selection: $selection
+        ) {
+            configureImageButton(with: capsule)
+        }
+    }
+    
+    func configureImageButton(with capsule: CapsuleCellViewModel) -> some View {
+        Button {
+            self.selection = 1
+        } label: {
+            Text(capsule.capsuleEmoji)
+                .font(Font.emojiFont)
+                .frame(
+                    width: Constant.capsuleImageViewSize,
+                    height: Constant.capsuleImageViewSize
+                )
+                .background(Color(UIColor.backgroundColor))
+                .cornerRadius(Constant.capsuleImageViewSize / 2)
+                .overlay(
+                    RoundedRectangle(
+                        cornerRadius: Constant.capsuleImageViewSize / 2
+                    )
+                        .stroke(Color.primaryTextColor, lineWidth: 2)
+                )
+        }
+    }
+    
+    func configureStatusButton(with capsule: CapsuleCellViewModel) -> some View {
+        Button {
+            debugPrint("Status button pressed \(capsule.id)")
+        } label: {
+            Circle()
+                .frame(width: Constant.capsuleStatusButtonSize, height: Constant.capsuleStatusButtonSize)
+                .foregroundColor(capsule.statusButtonColor)
+        }
+        .shadow(radius: 2)
+        .padding(.top, 16)
     }
 }
 
@@ -131,9 +128,11 @@ extension CapsulesView {
 extension CapsulesView {
     private enum Constant {
         static let capsuleStatusButtonSize: CGFloat = 16
-        static let capsuleImageViewSize: CGFloat = 120
+        static let capsuleImageViewSize: CGFloat = Constants.imageSize
     }
 }
+
+// MARK: - CapsulesView_Previews
 
 struct CapsulesView_Previews: PreviewProvider {
     static var previews: some View {

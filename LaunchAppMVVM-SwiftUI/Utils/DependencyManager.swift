@@ -19,7 +19,6 @@ struct Inject<T: Injectable> {
 }
 
 class Resolver {
-    
     private var storage = [String: Injectable]()
     
     static let shared = Resolver()
@@ -41,7 +40,6 @@ class Resolver {
         
         return injectable
     }
-
 }
 
 class DependencyManager {

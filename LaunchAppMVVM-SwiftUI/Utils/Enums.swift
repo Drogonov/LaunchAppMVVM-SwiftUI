@@ -23,3 +23,13 @@ enum LoadState {
     case fail
     case success
 }
+
+enum RoutesTypes: Hashable {
+    case settings(type: MainTabBar)
+    case mainTabBar
+}
+
+enum MainTabBar {
+    case launches
+    case capsules
+}

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Kingfisher
+import SwiftUI
 
 extension Int {
     var numberToString: String {

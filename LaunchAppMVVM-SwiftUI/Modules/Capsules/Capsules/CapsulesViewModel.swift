@@ -8,13 +8,6 @@
 
 import SwiftUI
 
-struct CapsuleCellViewModel {
-    let id: UUID = UUID()
-    var statusButtonColor: Color
-    var capsuleName: String
-    var capsuleEmoji: String
-}
-
 class CapsulesViewModel: ObservableObject {
     
     // MARK: - Properties
@@ -49,7 +42,7 @@ class CapsulesViewModel: ObservableObject {
 
 extension CapsulesViewModel {
     private func configureCapsulesArray(with response: [CapsuleMo]) {
-        capsules = response.map { model in
+        let newCapsules = response.map { model -> CapsuleCellViewModel in
             let statusButtonColor: Color = model.status == "active" ? .green : .red
             let serial = model.capsuleSerial ?? "no serial"
             
@@ -58,6 +51,10 @@ extension CapsulesViewModel {
                 capsuleName: serial,
                 capsuleEmoji: "🛰"
             )
+        }
+        
+        if newCapsules != capsules {
+            capsules = newCapsules
         }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct MainTabBarView: View {
     
     // MARK: - Properties
-    @Environment(\.presentationMode) private var presentationMode
+    
     @EnvironmentObject var router: Router
     @StateObject var launchesVM = LaunchesViewModel()
     @StateObject var capsulesVM = CapsulesViewModel()
@@ -45,7 +45,6 @@ struct MainTabBarView: View {
                 )
             default: EmptyView()
             }
-
         }
         .onChange(of: router.route) { _ in
             isPresentedSettings()

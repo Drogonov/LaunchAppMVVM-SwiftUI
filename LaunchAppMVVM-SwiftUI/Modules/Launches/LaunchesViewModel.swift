@@ -41,16 +41,18 @@ class LaunchesViewModel: ObservableObject {
 // MARK: - Helper Functions
 
 extension LaunchesViewModel {
-
-    
     private func configureLaunchesArray(with response: [LaunchMo]) {
-        launches = response.map { model in
+        let newLaunches = response.map { model -> LaunchesCellViewModel in
             return LaunchesCellViewModel(
                 name: model.missionName ?? "unnamed",
                 details: model.details ?? "no data",
                 launchYear: model.launchYear ?? "no data",
                 imageURL: model.links?.missionPatchSmall ?? ""
             )
+        }
+        
+        if newLaunches != launches {
+            launches = newLaunches
         }
     }
 }
