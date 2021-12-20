@@ -13,7 +13,7 @@ struct SettingsView: View {
     
     @EnvironmentObject var router: Router
     @ObservedObject var model: SettingsViewModel
-    var confirmButtonAction: () -> Void
+    @State private var showingAlert = false
     
     // MARK: - Construction
     
@@ -29,6 +29,9 @@ struct SettingsView: View {
         .onDisappear {
             router.route = .mainTabBar
         }
+        .alert(isPresented: self.$showingAlert) {
+            configureAlert()
+        }
     }
 }
 
@@ -43,7 +46,7 @@ extension SettingsView {
     
     func configureConfirmButton() -> some View {
         Button {
-            confirmButtonAction()
+            showingAlert = true
         } label: {
             Text(model.buttonText)
                 .padding(.horizontal, LocalConstants.buttonPaddingHorizontal)
@@ -52,6 +55,16 @@ extension SettingsView {
                 .background(Color.accentColor)
                 .cornerRadius(Constants.cornerRadius)
         }
+    }
+    
+    func configureAlert() -> Alert {
+        Alert(
+            title: Text("You confirmed new settings!"),
+            message: Text("Now your app is updated"),
+            dismissButton: .default(Text("OK"), action: {
+                self.showingAlert = false
+            })
+        )
     }
 }
 
@@ -70,8 +83,7 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView(
             model: SettingsViewModel(
                 type: .launches
-            ),
-            confirmButtonAction: {}
+            )
         )
     }
 }

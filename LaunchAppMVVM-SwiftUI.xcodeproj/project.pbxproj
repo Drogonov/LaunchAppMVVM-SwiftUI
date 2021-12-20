@@ -28,11 +28,9 @@
 		84DC1DDD276E3CE300E327C1 /* SpaceXDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DC2276E3CE300E327C1 /* SpaceXDataAPI.swift */; };
 		84DC1DDE276E3CE300E327C1 /* SpaceXDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DC3276E3CE300E327C1 /* SpaceXDataService.swift */; };
 		84DC1DE2276E3CE300E327C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DD1276E3CE300E327C1 /* Constants.swift */; };
-		84DC1DE3276E3CE300E327C1 /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DD2276E3CE300E327C1 /* Extension + UIViewController.swift */; };
 		84DC1DE5276E3CE300E327C1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DD4276E3CE300E327C1 /* Enums.swift */; };
 		84DC1DE6276E3CE300E327C1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DD5276E3CE300E327C1 /* Extensions.swift */; };
 		84DC1DE7276E3CE300E327C1 /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DD6276E3CE300E327C1 /* Extension + UIColor.swift */; };
-		84DC1DE8276E3CE300E327C1 /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DD7276E3CE300E327C1 /* Extension + UIView.swift */; };
 		84DC1DEA276E42D100E327C1 /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1DE9276E42D100E327C1 /* MainTabBarView.swift */; };
 		84DC1DED276E439D00E327C1 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 84DC1DEC276E439D00E327C1 /* Moya */; };
 		84DC1DF0276E43AB00E327C1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 84DC1DEF276E43AB00E327C1 /* Kingfisher */; };
@@ -68,11 +66,9 @@
 		84DC1DC2276E3CE300E327C1 /* SpaceXDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceXDataAPI.swift; sourceTree = "<group>"; };
 		84DC1DC3276E3CE300E327C1 /* SpaceXDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceXDataService.swift; sourceTree = "<group>"; };
 		84DC1DD1276E3CE300E327C1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		84DC1DD2276E3CE300E327C1 /* Extension + UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
 		84DC1DD4276E3CE300E327C1 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		84DC1DD5276E3CE300E327C1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		84DC1DD6276E3CE300E327C1 /* Extension + UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
-		84DC1DD7276E3CE300E327C1 /* Extension + UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
 		84DC1DE9276E42D100E327C1 /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
 		84DC1DF5276E44A000E327C1 /* CapsuleDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapsuleDetailsViewModel.swift; sourceTree = "<group>"; };
 		84DC1DF6276E44A100E327C1 /* LaunchesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchesViewModel.swift; sourceTree = "<group>"; };
@@ -197,12 +193,10 @@
 			isa = PBXGroup;
 			children = (
 				84DC1DD1276E3CE300E327C1 /* Constants.swift */,
-				84DC1DD2276E3CE300E327C1 /* Extension + UIViewController.swift */,
 				84DC1DD4276E3CE300E327C1 /* Enums.swift */,
 				84DC1DD5276E3CE300E327C1 /* Extensions.swift */,
 				845EDDB927709F6900B3F68A /* Extensions + UIFont.swift */,
 				84DC1DD6276E3CE300E327C1 /* Extension + UIColor.swift */,
-				84DC1DD7276E3CE300E327C1 /* Extension + UIView.swift */,
 				843A8F21276F6BCF008F2D47 /* DependencyManager.swift */,
 			);
 			path = Utils;
@@ -343,8 +337,6 @@
 				84DC1DFC276E44A100E327C1 /* CapsulesViewModel.swift in Sources */,
 				84DC1DE2276E3CE300E327C1 /* Constants.swift in Sources */,
 				845EDDBF2770AAAB00B3F68A /* LoadedView.swift in Sources */,
-				84DC1DE8276E3CE300E327C1 /* Extension + UIView.swift in Sources */,
-				84DC1DE3276E3CE300E327C1 /* Extension + UIViewController.swift in Sources */,
 				84DC1DE7276E3CE300E327C1 /* Extension + UIColor.swift in Sources */,
 				84DC1DDA276E3CE300E327C1 /* NetworkHelpers.swift in Sources */,
 				84DC1D4D276E3A9200E327C1 /* LaunchAppMVVM_SwiftUIApp.swift in Sources */,

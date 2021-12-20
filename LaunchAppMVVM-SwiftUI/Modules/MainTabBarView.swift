@@ -39,10 +39,7 @@ struct MainTabBarView: View {
             case .settings(type: let type):
                 let model = SettingsViewModel(type: type)
 
-                SettingsView(
-                    model: model,
-                    confirmButtonAction: {}
-                )
+                SettingsView(model: model)
             default: EmptyView()
             }
         }

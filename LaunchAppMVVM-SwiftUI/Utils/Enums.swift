@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 enum NotificationConfiguration {
     case textField
