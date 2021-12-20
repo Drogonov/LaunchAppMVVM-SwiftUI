@@ -8,15 +8,6 @@
 
 import Foundation
 
-struct CapsuleDetailsCellViewModel: Hashable {
-    var title: String = ""
-    var value: String = ""
-}
-
-struct CapsuleDetailsModel {
-    let serial: String
-}
-
 class CapsuleDetailsViewModel: ObservableObject {
     
     // MARK: - Properties
