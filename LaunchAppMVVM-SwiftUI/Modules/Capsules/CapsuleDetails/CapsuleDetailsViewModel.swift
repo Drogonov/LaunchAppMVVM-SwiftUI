@@ -44,7 +44,7 @@ class CapsuleDetailsViewModel: ObservableObject {
         loadState = .loading
         spaceXDataService.getCapsule(serial: model.serial) { [weak self] result in
             guard let self = self else { return }
-            sleep(Constants.delay)
+//            sleep(Constants.delay)
             switch result {
             case .success(let response):
                 guard let capsules = response else { return }

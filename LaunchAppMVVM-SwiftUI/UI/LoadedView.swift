@@ -23,7 +23,6 @@ struct LoadedView<SuccessView: View>: View {
                 Loader(color: .red)
             case .success:
                 successView
-                    .animation(.easeInOut)
             default:
                 Image(systemName: "arrow.clockwise")
                     .renderingMode(.template)

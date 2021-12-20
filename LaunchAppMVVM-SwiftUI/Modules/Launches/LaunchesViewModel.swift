@@ -24,7 +24,7 @@ class LaunchesViewModel: ObservableObject {
         loadState = .loading
         spaceXDataService.getLaunchesList { [weak self] result in
             guard let self = self else { return }
-            sleep(Constants.delay)
+//            sleep(Constants.delay)
             switch result {
             case .success(let response):
                 guard let launches = response else { return }

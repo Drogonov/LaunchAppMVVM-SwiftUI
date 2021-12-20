@@ -11,6 +11,7 @@ struct SettingsView: View {
     
     // MARK: - Properties
     
+    @EnvironmentObject var router: Router
     @ObservedObject var model: SettingsViewModel
     var confirmButtonAction: () -> Void
     
@@ -24,6 +25,9 @@ struct SettingsView: View {
                 configureConfirmButton()
             }
             .navigationTitle(model.navigationTitle)
+        }
+        .onDisappear {
+            router.route = .mainTabBar
         }
     }
 }
@@ -44,7 +48,7 @@ extension SettingsView {
             Text(model.buttonText)
                 .padding(.horizontal, LocalConstants.buttonPaddingHorizontal)
                 .frame(height: Constants.buttonHeight)
-                .foregroundColor(Color.primaryTextColor)
+                .foregroundColor(Color.backgroundColor)
                 .background(Color.accentColor)
                 .cornerRadius(Constants.cornerRadius)
         }

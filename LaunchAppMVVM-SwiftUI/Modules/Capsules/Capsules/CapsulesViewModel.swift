@@ -24,7 +24,7 @@ class CapsulesViewModel: ObservableObject {
         loadState = .loading
         spaceXDataService.getCapsulesList { [weak self] result in
             guard let self = self else { return }
-            sleep(Constants.delay)
+//            sleep(Constants.delay)
             switch result {
             case .success(let response):
                 guard let capsules = response else { return }
