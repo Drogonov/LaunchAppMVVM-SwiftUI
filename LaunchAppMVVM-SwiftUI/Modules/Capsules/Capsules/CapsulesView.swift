@@ -49,7 +49,7 @@ extension CapsulesView {
                     minimum: Display.width / 2 - 20,
                     maximum: Display.width / 2
                 ),
-                spacing: 8
+                spacing: Constants.smallPadding
             )
         ]
         
@@ -96,14 +96,14 @@ extension CapsulesView {
             Text(capsule.capsuleEmoji)
                 .font(Font.emojiFont)
                 .frame(
-                    width: Constant.capsuleImageViewSize,
-                    height: Constant.capsuleImageViewSize
+                    width: LocalConstants.capsuleImageViewSize,
+                    height: LocalConstants.capsuleImageViewSize
                 )
                 .background(Color(UIColor.backgroundColor))
-                .cornerRadius(Constant.capsuleImageViewSize / 2)
+                .cornerRadius(LocalConstants.capsuleImageViewSize / 2)
                 .overlay(
                     RoundedRectangle(
-                        cornerRadius: Constant.capsuleImageViewSize / 2
+                        cornerRadius: LocalConstants.capsuleImageViewSize / 2
                     )
                         .stroke(Color.primaryTextColor, lineWidth: 2)
                 )
@@ -115,18 +115,18 @@ extension CapsulesView {
             debugPrint("Status button pressed \(capsule.id)")
         } label: {
             Circle()
-                .frame(width: Constant.capsuleStatusButtonSize, height: Constant.capsuleStatusButtonSize)
+                .frame(width: LocalConstants.capsuleStatusButtonSize, height: LocalConstants.capsuleStatusButtonSize)
                 .foregroundColor(capsule.statusButtonColor)
         }
         .shadow(radius: 2)
-        .padding(.top, 16)
+        .padding(.top, Constants.standartPadding)
     }
 }
 
-// MARK: - Constants
+// MARK: - LocalConstants
 
 extension CapsulesView {
-    private enum Constant {
+    private enum LocalConstants {
         static let capsuleStatusButtonSize: CGFloat = 16
         static let capsuleImageViewSize: CGFloat = Constants.imageSize
     }
