@@ -17,6 +17,8 @@
 		845EDDBA27709F6900B3F68A /* Extensions-UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EDDB927709F6900B3F68A /* Extensions-UIFont.swift */; };
 		845EDDBD2770A73300B3F68A /* NavigationViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EDDBC2770A73300B3F68A /* NavigationViewStyle.swift */; };
 		845EDDBF2770AAAB00B3F68A /* LoadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EDDBE2770AAAB00B3F68A /* LoadedView.swift */; };
+		8473BB4827A3F4C9004DDD9C /* GXTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 8473BB4727A3F4C9004DDD9C /* GXTextField */; };
+		8473BB4A27A3F852004DDD9C /* TextFieldTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473BB4927A3F852004DDD9C /* TextFieldTest.swift */; };
 		84DC1D4D276E3A9200E327C1 /* LaunchAppMVVM_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1D4C276E3A9200E327C1 /* LaunchAppMVVM_SwiftUIApp.swift */; };
 		84DC1D4F276E3A9200E327C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC1D4E276E3A9200E327C1 /* ContentView.swift */; };
 		84DC1D51276E3A9400E327C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84DC1D50276E3A9400E327C1 /* Assets.xcassets */; };
@@ -56,6 +58,7 @@
 		845EDDB927709F6900B3F68A /* Extensions-UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions-UIFont.swift"; sourceTree = "<group>"; };
 		845EDDBC2770A73300B3F68A /* NavigationViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewStyle.swift; sourceTree = "<group>"; };
 		845EDDBE2770AAAB00B3F68A /* LoadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedView.swift; sourceTree = "<group>"; };
+		8473BB4927A3F852004DDD9C /* TextFieldTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTest.swift; sourceTree = "<group>"; };
 		84DC1D49276E3A9200E327C1 /* LaunchAppMVVM-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LaunchAppMVVM-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DC1D4C276E3A9200E327C1 /* LaunchAppMVVM_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAppMVVM_SwiftUIApp.swift; sourceTree = "<group>"; };
 		84DC1D4E276E3A9200E327C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 			files = (
 				84DC1DF0276E43AB00E327C1 /* Kingfisher in Frameworks */,
 				84DC1DED276E439D00E327C1 /* Moya in Frameworks */,
+				8473BB4827A3F4C9004DDD9C /* GXTextField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +246,7 @@
 				84DC1DF8276E44A100E327C1 /* SettingsModel.swift */,
 				843A8F1B276F566C008F2D47 /* SettingsView.swift */,
 				84DC1DF9276E44A100E327C1 /* SettingsViewModel.swift */,
+				8473BB4927A3F852004DDD9C /* TextFieldTest.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 			packageProductDependencies = (
 				84DC1DEC276E439D00E327C1 /* Moya */,
 				84DC1DEF276E43AB00E327C1 /* Kingfisher */,
+				8473BB4727A3F4C9004DDD9C /* GXTextField */,
 			);
 			productName = "LaunchAppMVVM-SwiftUI";
 			productReference = 84DC1D49276E3A9200E327C1 /* LaunchAppMVVM-SwiftUI.app */;
@@ -324,6 +330,7 @@
 			packageReferences = (
 				84DC1DEB276E439D00E327C1 /* XCRemoteSwiftPackageReference "Moya" */,
 				84DC1DEE276E43AB00E327C1 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				8473BB4627A3F4C9004DDD9C /* XCRemoteSwiftPackageReference "garpix_textfields" */,
 			);
 			productRefGroup = 84DC1D4A276E3A9200E327C1 /* Products */;
 			projectDirPath = "";
@@ -376,6 +383,7 @@
 				845EDDBA27709F6900B3F68A /* Extensions-UIFont.swift in Sources */,
 				845EDDBD2770A73300B3F68A /* NavigationViewStyle.swift in Sources */,
 				84E009FA2770D5BD00F9BE7C /* CapsuleDetailsModel.swift in Sources */,
+				8473BB4A27A3F852004DDD9C /* TextFieldTest.swift in Sources */,
 				84DC1DFD276E44A100E327C1 /* SettingsModel.swift in Sources */,
 				84DC1DE6276E3CE300E327C1 /* Extensions.swift in Sources */,
 				84DC1DE5276E3CE300E327C1 /* Enums.swift in Sources */,
@@ -589,6 +597,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8473BB4627A3F4C9004DDD9C /* XCRemoteSwiftPackageReference "garpix_textfields" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GARPIX-iOS/garpix_textfields";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		84DC1DEB276E439D00E327C1 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -608,6 +624,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8473BB4727A3F4C9004DDD9C /* GXTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8473BB4627A3F4C9004DDD9C /* XCRemoteSwiftPackageReference "garpix_textfields" */;
+			productName = GXTextField;
+		};
 		84DC1DEC276E439D00E327C1 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 84DC1DEB276E439D00E327C1 /* XCRemoteSwiftPackageReference "Moya" */;

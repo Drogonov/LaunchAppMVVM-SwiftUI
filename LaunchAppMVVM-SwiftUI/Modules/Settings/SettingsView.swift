@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import GXTextField
+import GXUtilz
 
 struct SettingsView: View {
     
@@ -14,7 +16,9 @@ struct SettingsView: View {
     @EnvironmentObject var router: Router
     @ObservedObject var model: SettingsViewModel
     @State private var showingAlert = false
-    
+    @State var selection: Int? = nil
+    @State var text: String = ""
+
     // MARK: - Construction
     
     var body: some View {
@@ -22,6 +26,7 @@ struct SettingsView: View {
             VStack {
                 configureTextEditor()
                 Spacer()
+                configureNavigationButton()
                 configureConfirmButton()
             }
             .navigationTitle(model.navigationTitle)
@@ -65,6 +70,25 @@ extension SettingsView {
                 self.showingAlert = false
             })
         )
+    }
+    
+    func configureNavigationButton() -> some View {
+        NavigationLink(
+            destination: TextFieldTestView(),
+            tag: 1,
+            selection: $selection
+        ) {
+            Button {
+                selection = 1
+            } label: {
+                Text("Try some TextFields")
+                    .padding(.horizontal, LocalConstants.buttonPaddingHorizontal)
+                    .frame(height: Constants.buttonHeight)
+                    .foregroundColor(Color.backgroundColor)
+                    .background(Color.orange)
+                    .cornerRadius(Constants.cornerRadius)
+            }
+        }
     }
 }
 

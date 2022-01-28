@@ -79,7 +79,7 @@ extension CapsulesView {
         .cornerRadius(Constants.cornerRadius)
     }
     
-    func configureNavigationButton(with capsule: CapsuleCellViewModel, and model: CapsuleDetailsViewModel) -> some View{
+    func configureNavigationButton(with capsule: CapsuleCellViewModel, and model: CapsuleDetailsViewModel) -> some View {
         NavigationLink(
             destination: CapsuleDetailsView(model: model),
             tag: 1,
